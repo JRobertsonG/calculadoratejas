@@ -18,8 +18,8 @@ def index():
             {"id": 4, "largo_util": 1.07, "ancho_util": 0.82},
             {"id": 5, "largo_util": 1.37, "ancho_util": 0.82},
             {"id": 6, "largo_util": 1.68, "ancho_util": 0.82},
-            {"id": 8, "largo_util": 2.29, "ancho_util": 0.82},
-            {"id": 10, "largo_util": 2.90, "ancho_util": 0.82}
+            {"id": 10, "largo_util": 2.29, "ancho_util": 0.82},
+            {"id": 18, "largo_util": 2.90, "ancho_util": 0.82},
         ]
 
         if tipo_teja == "opcion2":
@@ -47,9 +47,11 @@ def index():
             resultado = combinaciones[0]
             conteo = Counter(resultado["combo"])
             detalle_tejas = []
+
             for tipo, cantidad in conteo.items():
                 total = cantidad * resultado["tejas_por_fila"]
                 detalle_tejas.append({"tipo": tipo, "cantidad": total})
+
             resultado["detalle_tejas"] = detalle_tejas
         else:
             resultado = {
