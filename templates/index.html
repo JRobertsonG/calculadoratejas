@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de Tejas</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background-color: #f5f5f5; }
+    h1 { color: #444; }
+    input, button { padding: 10px; margin: 5px; }
+    .resultado { background: #fff; padding: 15px; border-radius: 5px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Tejas</h1>
+  <form method="post">
+    <label>Ancho (m):</label><br>
+    <input type="number" name="ancho" step="0.01" required><br>
+    <label>Largo (m):</label><br>
+    <input type="number" name="largo" step="0.01" required><br>
+
+    <label>Tipo de teja:</label><br>
+    <select name="tipo_teja" required>
+      <option value="opcion1">Opción1</option>
+      <option value="opcion2">Opción2</option>
+    </select><br><br>
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  {% if resultado %}
+  <div class="resultado">
+    <h3>Resultado:</h3>
+    <p>Combinación de tejas: {{ resultado.combo }}</p>
+    <p>Largo cubierto: {{ resultado.largo_total }} m</p>
+    <p>Tejas por fila: {{ resultado.tejas_por_fila }}</p>
+    <p>Total de tejas: {{ resultado.total_tejas }}</p>
+    <h4>Detalle por tipo de teja:</h4>
+    <ul>
+      {% for t in resultado.detalle_tejas %}
+        <li>Teja #{{ t.tipo }}: {{ t.cantidad }} unidades</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</body>
+</html>
