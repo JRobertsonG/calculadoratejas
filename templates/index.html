@@ -27,10 +27,10 @@
     {% if resultado %}
     <div class="resultado">
         <h3>Resultado:</h3>
-        <p><strong>Combinación de tejas:</strong> {{ resultado.combo }}</p>
-        <p><strong>Largo cubierto:</strong> {{ resultado.largo_total }} m</p>
-        <p><strong>Tejas por fila:</strong> {{ resultado.tejas_por_fila }}</p>
-        <p><strong>Total de tejas:</strong> {{ resultado.total_tejas }}</p>
+        <p>Combinación de tejas: {{ resultado.combo }}</p>
+        <p>Largo cubierto: {{ resultado.largo_total }} m</p>
+        <p>Tejas por fila: {{ resultado.tejas_por_fila }}</p>
+        <p>Total de tejas: {{ resultado.total_tejas }}</p>
         <h4>Detalle por tipo de teja:</h4>
         <ul>
             {% for t in resultado.detalle_tejas %}

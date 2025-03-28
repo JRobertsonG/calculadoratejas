@@ -1,6 +1,6 @@
 from collections import Counter
 from flask import Flask, render_template, request
-from itertools import product
+from itertools import combinations_with_replacement
 import math
 
 app = Flask(__name__)
@@ -18,8 +18,8 @@ def index():
             {"id": 4, "largo_util": 1.07, "ancho_util": 0.82},
             {"id": 5, "largo_util": 1.37, "ancho_util": 0.82},
             {"id": 6, "largo_util": 1.68, "ancho_util": 0.82},
-            {"id": 10, "largo_util": 2.29, "ancho_util": 0.82},
-            {"id": 18, "largo_util": 2.90, "ancho_util": 0.82},
+            {"id": 8, "largo_util": 2.29, "ancho_util": 0.82},
+            {"id": 10, "largo_util": 2.90, "ancho_util": 0.82}
         ]
 
         if tipo_teja == "opcion2":
@@ -29,11 +29,14 @@ def index():
         tejas_por_fila = math.ceil(ancho / 0.82)
         combinaciones = []
 
+        # Generar combinaciones con reemplazo para evitar duplicados innecesarios
         for r in range(1, 10):
-            for combo in product(tejas, repeat=r):
+            for combo in combinations_with_replacement(tejas, r):
                 suma_largo = sum(t["largo_util"] for t in combo)
+
                 if suma_largo > largo + 0.7:
                     continue
+
                 if suma_largo >= largo:
                     combinaciones.append({
                         "combo": [t["id"] for t in combo],
